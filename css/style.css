@@ -1,0 +1,29 @@
+*{
+    margin: 0px;
+    padding: 0px;
+
+    box-sizing: border-box;
+}
+
+#main{
+    height: 100vh !important;
+}
+
+input[type='radio']{
+    display: none !important;
+}
+
+.fa-star{
+    cursor: pointer;
+}
+
+.stars-icon-select{
+    color: yellow;
+    animation: star 3s linear infinite;
+}
+
+@keyframes star{
+    100%{
+        
+    }
+}
