@@ -9,9 +9,15 @@
     height: 100vh !important;
 }
 
+main#main>div.container-fluid{
+    height: 100%;
+}
+
 input[type='radio']{
     display: none !important;
 }
+
+
 
 .fa-star{
     cursor: pointer;

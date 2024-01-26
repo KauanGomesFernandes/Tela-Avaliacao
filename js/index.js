@@ -1,5 +1,6 @@
 var inputStarChecked
-var erroSubmit = false
+var erroStarSubmit = false
+var erroComentarioSubmit = false
 
 function selectStar() {
 
@@ -36,9 +37,9 @@ function submitComentario(env){
     form = document.getElementById("form-avaliacao");
     comentario = document.getElementsByName("textComentario")[0].value;
 
-    if(inputStarChecked == undefined){
+    if(inputStarChecked === undefined){
 
-        erroSubmit = true
+        erroStarSubmit = true
 
         let starCheckedErro = document.getElementById("container-erro-stars");
 
@@ -51,11 +52,11 @@ function submitComentario(env){
 
     if(inputStarChecked != undefined){
 
-        erroSubmit = false
+        erroStarSubmit = false
 
         let starCheckedErro = document.getElementById("container-erro-stars");
 
-        if(starCheckedErro.textContent != ""){   
+        if(starCheckedErro.textContent != ""){
             starCheckedErro.textContent = ""
         }
 
@@ -68,11 +69,36 @@ function submitComentario(env){
         }
     }
 
-    console.log(comentario)
     console.log(chars)
-    
 
-    if(erroSubmit){
+    if(chars <= 0){
+        erroComentarioSubmit = true
+        comentarioErro = document.getElementById("container-erro-comentario");
+
+        text = document.createTextNode("Deixe seu comentário");    
+        comentarioErro.appendChild(text)
+    }
+
+    if(chars >= 250){
+        erroComentarioSubmit = true
+
+        comentarioErro = document.getElementById("container-erro-comentario");
+        comentarioErro.textContent = "";
+
+        text = document.createTextNode("Quantidade de caracteres permitidos 250");    
+        comentarioErro.appendChild(text)
+    }
+
+    
+    if(chars >= 3 && chars <= 250){
+        erroComentarioSubmit = false
+        comentarioErro = document.getElementById("container-erro-comentario");
+
+        comentarioErro.textContent = "";
+    }
+
+
+    if(erroStarSubmit || erroComentarioSubmit){
         env.preventDefault();
     }
 }
