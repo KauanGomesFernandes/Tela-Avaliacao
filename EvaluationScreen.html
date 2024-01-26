@@ -22,7 +22,7 @@
                 <div class="col-sm-12 col-lg-6">
 
                     <div class="">
-                        <h2 class="display-6">Título</h2>
+                        <h2 class="display-5">Título</h2>
                     </div>
 
                     <div class="">
@@ -35,16 +35,18 @@
                             Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
                             when an unknown printer took a galley of type and scrambled it to make a type 
                             specimen book. It has survived not only five centuries, but also the leap into 
-                            electronic typesetting, remaining essentially unchanged. 
-                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
-                            and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+                            electronic typesetting, remaining essentially unchanged.
                         </p>
                     </span>
 
                 </div>
 
-                <form class="col-sm-12 col-lg-6" action="" method="get" onsubmit="submitComentario(env)">
+                <form class="col-sm-12 col-lg-6" id="form-avaliacao" action="" method="post" onsubmit="submitComentario(event)">
+
                     <div class="">
+                        <div class="">
+                            <h2 class="display-6">Avaliação:</h2>
+                        </div>
 
                         <label for="star-0">
                             <i class="fa-regular fa-star fs-2"></i>
@@ -73,9 +75,17 @@
 
                     </div>
 
+                    <div class="">
+                        <span id="container-erro-stars" class="container-erro-stars text-danger"></span>
+                    </div>
+
                     <div class="form-floating my-2">
-                        <textarea class="form-control" placeholder="" id="floatingTextarea2" style="max-height: 100px"></textarea>
+                        <textarea class="form-control" name="textComentario" placeholder="" maxlength="250" minlength="3" id="floatingTextarea2" style="min-height: 120px; max-height: 150px;" required></textarea>
                         <label for="floatingTextarea2">Comentário</label>
+                    </div>
+
+                    <div class="">
+                        <span id="container-erro-comentario" class="container-erro-comentario"></span>
                     </div>
     
                     <div class="d-grid gap-2 my-2">

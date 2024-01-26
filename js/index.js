@@ -1,14 +1,11 @@
+var inputStarChecked
+var erroSubmit = false
+
 function selectStar() {
 
     inputStars = document.getElementsByName('input-star');
-    stars = document.getElementsByClassName('fa-star')
+    stars = document.getElementsByClassName('fa-star');
 
-    removeStar = false;
-
-    /*
-    if (typeof inputStarChecked == "undefined"){
-        console.log("/")
-    }*/
 
     for (let i = 0; i < inputStars.length; i++) {
 
@@ -36,4 +33,46 @@ function selectStar() {
 
 function submitComentario(env){
 
+    form = document.getElementById("form-avaliacao");
+    comentario = document.getElementsByName("textComentario")[0].value;
+
+    if(inputStarChecked == undefined){
+
+        erroSubmit = true
+
+        let starCheckedErro = document.getElementById("container-erro-stars");
+
+        if(starCheckedErro.textContent == undefined || starCheckedErro.textContent == ""){
+            text = document.createTextNode("Selecione uma estrela");    
+            starCheckedErro.appendChild(text)
+        }
+
+    }
+
+    if(inputStarChecked != undefined){
+
+        erroSubmit = false
+
+        let starCheckedErro = document.getElementById("container-erro-stars");
+
+        if(starCheckedErro.textContent != ""){   
+            starCheckedErro.textContent = ""
+        }
+
+    }
+
+    let chars = 0;
+    for(const char of comentario){
+        if (char !== " ") {
+            chars++;
+        }
+    }
+
+    console.log(comentario)
+    console.log(chars)
+    
+
+    if(erroSubmit){
+        env.preventDefault();
+    }
 }
